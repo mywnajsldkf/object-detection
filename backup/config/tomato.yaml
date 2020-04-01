@@ -1,0 +1,11 @@
+yolo_model:
+
+  config_file:
+    name: tomato.cfg
+  weight_file:
+    name: tomato_30000.weights
+  threshold:
+    value: 0.3
+  detection_classes:
+    names:
+      - tomato
