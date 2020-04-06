@@ -1,0 +1,15 @@
+<launch>
+  <arg name="sim"	default="false"		doc="false is real camera, true is gazebo simulation"/>
+  <!-- Console launch prefix -->
+  <arg name="launch_prefix" default=""/>
+  <arg     if="$(arg sim)" name="input_image"        default="/d435/rgb/image_raw"/>
+  <arg unless="$(arg sim)" name="input_image"        default="/camera/color/image_rect_color"/>
+
+  <!-- CAMERA -->
+  <include unless="$(arg sim)" file="$(find darknet_ros)/launch/bringup_d435.launch"/>
+  <param name="/darknet_ros/subscribers/camera_reading/topic"      value="$(arg input_image)"/>
+  <param name="/darknet_ros/subscribers/camera_reading/queue_size" value="1"/>
+
+  <!-- DARKNET -->
+  <include file="$(find darknet_ros)/launch/darknet_ros.launch"/>
+</launch>

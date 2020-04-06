@@ -1,0 +1,13 @@
+<launch>    
+   <arg name="rviz"            default="true"/>
+   <arg name="sim"               default="false"   doc="false is real camera, true is gazebo simulation"/>  
+
+   <include file="$(find darknet_ros)/launch/object_detection.launch">
+      <arg name="sim" value="$(arg sim)"/>
+   </include>
+
+  <!-- RVIZ -->
+   <node if="$(arg rviz)" pkg="rviz" type="rviz" name="rviz"
+	args="-d $(find darknet_ros)/config/tomato_yolo_jsk.rviz" />
+
+</launch>

@@ -6,15 +6,17 @@
  *   Institute: ETH Zurich, Robotic Systems Lab
  */
 
+/*
+ *  Edited on: Aug 20, 2019
+ *      Author: Hyeonjun Park
+ *   Institute: Human-Robot Interaction LAB, Kyung Hee Unviersity, South Korea
+ */
+
 // yolo object detector
 #include "darknet_ros/YoloObjectDetector.hpp"
 
 // Check for xServer
 #include <X11/Xlib.h>
-
-// ji : Include RealSense Cross Platform API
-#include <librealsense2/rs.hpp>
-//#include <iostream>
 
 #ifdef DARKNET_FILE_PATH
 std::string darknetFilePath_ = DARKNET_FILE_PATH;
@@ -184,12 +186,7 @@ void YoloObjectDetector::init()
 								   labelImageLatch);
   targetObjectSubscriber_ = nodeHandle_.subscribe("/targetObjectSubscriber", 10,
                                                &YoloObjectDetector::targetObjectCallback,this);
-
-  /*                                             
 //! hj editing                                               
-  targetObjectSubscriber2_ = nodeHandle_.subscribe("/targetObjectSubscriber2", 10,
-                                               &YoloObjectDetector::targetObjectCallback2,this);                                          
-  */
 
   // Action servers.
   std::string checkForObjectsActionName;
@@ -210,16 +207,6 @@ void YoloObjectDetector::targetObjectCallback(const std_msgs::String::ConstPtr& 
   targetObjectList[0] = msg->data.c_str();
   return;
 }
-
-/*
-//! hj editing
-void YoloObjectDetector::targetObjectCallback2(const std_msgs::String::ConstPtr& msg)
-{
-  //ROS_INFO("I heard: [%s]", msg->data.c_str());
-  targetObjectList[1] = msg->data.c_str();
-  return;
-}
-*/
 
 void YoloObjectDetector::cameraCallback(const sensor_msgs::ImageConstPtr& msg)
 {
@@ -415,10 +402,6 @@ void *YoloObjectDetector::detectInThread()
     float xmax = dets[i].bbox.x + dets[i].bbox.w / 2.;
     float ymin = dets[i].bbox.y - dets[i].bbox.h / 2.;
     float ymax = dets[i].bbox.y + dets[i].bbox.h / 2.;
-    
-    // data
-    float x = (xmax - xmin)/2;
-    float y = (ymax - ymin)/2;
 
     if (xmin < 0)
       xmin = 0;
@@ -428,7 +411,6 @@ void *YoloObjectDetector::detectInThread()
       xmax = 1;
     if (ymax > 1)
       ymax = 1;
-
 
     // iterate through possible boxes and collect the bounding boxes
     for (j = 0; j < demoClasses_; ++j) 
@@ -445,16 +427,6 @@ void *YoloObjectDetector::detectInThread()
         float y_center = (ymin + ymax) / 2;
         float BoundingBox_width = xmax - xmin;
         float BoundingBox_height = ymax - ymin;
-
-        // jeongin added
-        // float dist_to_center = depth.get_distance(x_center,y_center);
-
-        /*
-        // jeongin added
-        printf("x : %f\n", x_center);
-        printf("y : %f\n", y_center);
-        printf("z : %f\n", dist_to_center);
-        */
 
         // define bounding box
         // BoundingBox must be 1% size of frame (3.2x2.4 pixels)
@@ -480,9 +452,6 @@ void *YoloObjectDetector::detectInThread()
       }
     }
   }
-
-  
-
 
  if (!publishLabelImage(label_im)) {
     ROS_DEBUG("Label image has not been broadcasted.");

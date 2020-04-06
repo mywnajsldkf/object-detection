@@ -1,5 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
-
 <launch>
   <!-- Console launch prefix -->
   <arg name="launch_prefix" default=""/>
@@ -10,12 +8,12 @@
   <arg name="yolo_config_path"           default="$(find darknet_ros)/yolo_network_config/cfg"/>
 
   <!-- ROS and network parameter files -->
-  <arg name="ros_param_file"             default="$(find darknet_ros)/config/ros.yaml"/>
-  <arg name="network_param_file"         default="$(find darknet_ros)/config/tomato.yaml"/>
+  <!-- <arg name="ros_param_file"             default="$(find darknet_ros)/config/ros.yaml"/> -->
+  <!-- <arg name="network_param_file"         default="$(find darknet_ros)/config/tomato.yaml"/> -->
 
   <!-- Load parameters -->
-  <rosparam command="load" ns="darknet_ros" file="$(arg ros_param_file)"/>
-  <rosparam command="load" ns="darknet_ros" file="$(arg network_param_file)"/>
+  <rosparam command="load" ns="darknet_ros" file="$(find darknet_ros)/config/ros.yaml"/>
+  <rosparam command="load" ns="darknet_ros" file="$(find darknet_ros)/config/tomato.yaml"/>
 
   <!-- Start darknet and ros wrapper -->
   <node pkg="darknet_ros" type="darknet_ros" name="darknet_ros" output="screen" launch-prefix="$(arg launch_prefix)">
