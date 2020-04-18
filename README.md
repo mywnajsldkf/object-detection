@@ -152,7 +152,7 @@ $ rosrun darknet_ros object_collector.py	# distance from object
 
 ### Result
 
-![test-image](doc\test-image.png)
+![test-image](./doc/test-image.png)
 
 
 
