@@ -35,7 +35,7 @@ YOLO depends on the OpenCV (at least 3.4.x)
 
 - [Opencv 3.4.6 (on JetsonTX2)](https://jkjung-avt.github.io/opencv-on-nano/)
 
-  (my) ROS default python package is `python2.7`. so I changed shell script a little for downloading OpenCV 3.4.6 on python2. Here is shell script that I changed.
+  (my) ROS default python package is `python2.7`. so I changed shell script a little for installing OpenCV 3.4.6 on python2. [Here](https://github.com/mywnajsldkf/object-detection/blob/master/doc/install_opencv-3.4.6.sh) is shell script that I changed.
 
   - more details about ROS with Python version please refer [this page](https://medium.com/@beta_b0t/how-to-setup-ros-with-python-3-44a69ca36674)
 
