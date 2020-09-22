@@ -93,7 +93,7 @@ cmake -D CMAKE_BUILD_TYPE=RELEASE -D CMAKE_INSTALL_PREFIX=/usr/local \
       -D BUILD_opencv_python2=ON -D BUILD_opencv_python3=ON \
       -D BUILD_TESTS=OFF -D BUILD_PERF_TESTS=OFF -D BUILD_EXAMPLES=OFF \
       -D WITH_QT=ON -D WITH_OPENGL=ON ..
-      make -j4 (core)
+make -j$(nproc)
 sudo make install
 sudo ldconfig
 
@@ -101,4 +101,3 @@ python3 -c 'import cv2; print("python3 cv2 version: %s" % cv2.__version__)'
 python2 -c 'import cv2; print("python2 cv2 version: %s" % cv2.__version__)'
 
 echo "** Install opencv-3.4.6 successfully"
-

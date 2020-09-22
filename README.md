@@ -51,10 +51,9 @@ YOLO depends on the OpenCV (at least 3.4.x)
   $ mkdir -p ~/catkin_ws/src
   $ cd ..
   $ catkin_make	# build, devel, src directory will be made
-  $ devel/setup.bash
   $ source ~/catkin_ws/devel/setup.bash	# register workspace
   ```
-
+  
 - darknet_ros
 
   ```
@@ -69,6 +68,7 @@ YOLO depends on the OpenCV (at least 3.4.x)
 
   - download [Intel Realsense SDK](https://github.com/IntelRealSense/librealsense/releases)
   - [realsense-ros](https://github.com/IntelRealSense/realsense-ros)
+  - please check the real sense-ros version because it depends on intel Realsense SDK.
 
   ```
   $ cd ~/catkin_ws/src
@@ -133,7 +133,7 @@ in yolo_network_config/cfg/
 $ cp -r tomato.cfg ~/catkin_ws/src/darknet_ros/darknet_ros/cfg
 ```
 
-Weight file Download [link](https://drive.google.com/open?id=1rBdkmsanaaipFpN_RTeInV77C4rOXoOV)
+Weight file Download [link](https://drive.google.com/file/d/1f615qxgQMaswqy6ZJyNqtfsV400mJbBY/view?usp=sharing)
 
 ```
 $ cp -r tomato_30000.weights ~/catkin_ws/src/darknet_ros/darknet_ros/yolo_network_config/weights
@@ -155,11 +155,3 @@ $ rosrun darknet_ros object_collector.py	# distance from object
 ![test-image](./doc/test-image.png)
 
 
-
----
-
-this project is not finished.
-
-I'm struggling to connect it with UR3 (robot arm)
-
-I will upload if there is something progress
