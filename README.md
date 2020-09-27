@@ -129,6 +129,12 @@ in src directory
 $ cp -r YoloObjectDetector.cpp ~/catkin_ws/src/darknet_ros/darknet_ros/src
 $ cp -r yolo_object_detector_node.cpp ~/catkin_ws/src/darknet_ros/darknet_ros/src
 
+in include/darknet_ros
+$cp -r image_interface.h
+~/catkin_ws/src/darknet_ros/darknet_ros/include/darknet_ros
+$cp -r YoloObjectDetector.hpp
+~/catkin_ws/src/darknet_ros/darknet_ros/include/darknet_ros
+
 in yolo_network_config/cfg/
 $ cp -r tomato.cfg ~/catkin_ws/src/darknet_ros/darknet_ros/cfg
 ```
